@@ -12,8 +12,16 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
-      - name: Check Node v
-        run: node -v
+      - name: nvm yarn install
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+          export NVM_DIR="/home/ec2-user/.nvm"
+          [ -s "/home/ec2-user/.nvm/nvm.sh" ] && \. "/home/ec2-user/.nvm/nvm.sh"
+          [ -s "/home/ec2-user/.nvm/bash_completion" ] && \. "/home/ec2-user/.nvm/bash_completion"
+          nvm install 16
+          nvm use v16
+          npm install
+          npm run build
 
       - name: Build front
         run: |
