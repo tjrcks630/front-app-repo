@@ -19,7 +19,7 @@ jobs:
         run: |
           sudo npm install
           sudo npm install -g n
-          sudo n 16.20.0
+          sudo n 16.20.2
           sudo npm run build
 
       - name: Configure AWS credentials
